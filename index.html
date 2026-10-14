@@ -23,7 +23,7 @@
         h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
@@ -34,7 +34,9 @@
             border-radius: 12px;
             padding: 25px;
             transition: transform 0.2s, border-color 0.2s;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -49,7 +51,7 @@
             text-decoration: none;
             border-radius: 6px;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 15px;
         }
         .btn:hover { background-color: #3700b3; }
     </style>
@@ -57,23 +59,37 @@
 <body>
 
     <header>
-        <h1>🎮 My Gaming Hub </h1>
-        <p>Welcome to the ultimate arcade. Choose a game below to begin!</p>
+        <h1>🎮 Kid's Coding Arcade </h1>
+        <p>Play the games, then open up GitHub to change how they work!</p>
     </header>
 
     <div class="grid">
-        <!-- Game 1 Card -->
+        <!-- Game 1 -->
         <div class="card">
             <h3>Clicker Mania</h3>
             <p>Score points by clicking as fast as you can before time runs out!</p>
             <a href="clicker.html" class="btn">Play Now</a>
         </div>
 
-        <!-- Game 2 Card (UNLOCKED!) -->
+        <!-- Game 2 -->
         <div class="card">
             <h3>⚡ Reflex Tester</h3>
-            <p>Test your gaming response speed! Click the target the millisecond it flashes green.</p>
+            <p>Test your speed! Click the target the exact millisecond it flashes green.</p>
             <a href="reaction.html" class="btn" style="background-color: #03dac6; color: #121214;">Play Now</a>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="card">
+            <h3>🧮 Math Attack!</h3>
+            <p>A high-speed math quest. Rapid addition helper to gain points!</p>
+            <a href="math.html" class="btn" style="background-color: #ff4757;">Play Now</a>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="card">
+            <h3>🔮 Number Wizard</h3>
+            <p>Use elimination logic to hunt down the system's hidden secret number.</p>
+            <a href="guess.html" class="btn" style="background-color: #ffa502; color: #121214;">Play Now</a>
         </div>
     </div>
 
