@@ -1,151 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Game Radar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Portal</title>
     <style>
         body {
-            background-color: #0f172a;
+            background-color: #121214;
             color: #ffffff;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
+            margin: 0;
             padding: 20px;
         }
-        h1 {
-            color: #38bdf8;
-            font-size: 36px;
+        header {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #6200ee, #03dac6);
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .container {
-            max-width: 600px;
+        h1 { margin: 0; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
             margin: 0 auto;
         }
-        .quiz-box, .review-box {
-            background-color: #1e293b;
-            border: 2px solid #38bdf8;
+        .card {
+            background-color: #1e1e24;
+            border: 2px solid #333;
             border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        select, input, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 6px;
-            border: none;
-            box-sizing: border-box;
-        }
-        select, input, textarea {
-            background-color: #0f172a;
-            color: #fff;
-            border: 1px solid #334155;
-        }
-        button {
-            background-color: #38bdf8;
-            color: #0f172a;
-            font-weight: bold;
-            font-size: 16px;
+            padding: 25px;
+            transition: transform 0.2s, border-color 0.2s;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #0284c7;
-            color: #fff;
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #03dac6;
         }
-        #quiz-result, #reviews-list {
-            margin-top: 15px;
-            background-color: #0f172a;
-            padding: 12px;
+        .card h3 { margin-top: 0; color: #03dac6; }
+        .btn {
+            display: inline-block;
+            background-color: #6200ee;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
             border-radius: 6px;
-            border-left: 3px solid #38bdf8;
-        }
-        .user-review {
+            font-weight: bold;
             margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid #334155;
         }
+        .btn:hover { background-color: #3700b3; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>📡 Game Radar</h1>
-        <p>Your interactive hub for top games & community reviews!</p>
+    <header>
+        <h1>🎮 My Gaming Hub </h1>
+        <p>Welcome to the ultimate arcade. Choose a game below to begin!</p>
+    </header>
 
-        <!-- QUIZ SECTION -->
-        <div class="quiz-box">
-            <h2>🎮 Game Finder Quiz</h2>
-            <label for="genreSelect">Choose your favorite genre:</label>
-            <select id="genreSelect">
-                <option value="adventure">Open World / Adventure</option>
-                <option value="rpg">RPG / Action</option>
-                <option value="shooter">Shooter / Action</option>
-            </select>
-
-            <label for="platformSelect">Preferred platform:</label>
-            <select id="platformSelect">
-                <option value="switch">Nintendo Switch</option>
-                <option value="pc">PC / Mobile</option>
-                <option value="all">Any Platform</option>
-            </select>
-
-            <button onclick="recommendGame()">Find My Game!</button>
-            <div id="quiz-result">Answer the quiz above to get a tailored recommendation!</div>
+    <div class="grid">
+        <!-- Game 1 Card -->
+        <div class="card">
+            <h3>Clicker Mania</h3>
+            <p>Score points by clicking as fast as you can before time runs out!</p>
+            <a href="clicker.html" class="btn">Play Now</a>
         </div>
 
-        <!-- REVIEW SECTION -->
-        <div class="review-box">
-            <h2>📝 Community Reviews</h2>
-            <input type="text" id="gameName" placeholder="Game Title">
-            <textarea id="reviewText" rows="3" placeholder="Write your review here..."></textarea>
-            <button onclick="addReview()">Submit Review</button>
-
-            <div id="reviews-list">
-                <strong>Recent Reviews:</strong>
-                <div class="user-review">
-                    <strong>Zelda: Tears of the Kingdom</strong>
-                    <p>Absolute masterpiece of an open world!</p>
-                </div>
-            </div>
+        <!-- Future Game Card Placeholder -->
+        <div class="card" style="opacity: 0.5; cursor: not-allowed;">
+            <h3>Coming Soon</h3>
+            <p>A brand new interactive game is currently under development.</p>
+            <span class="btn" style="background:#555;">Locked</span>
         </div>
     </div>
-
-    <script>
-        function recommendGame() {
-            const genre = document.getElementById('genreSelect').value;
-            const resultBox = document.getElementById('quiz-result');
-
-            let recommendation = "Minecraft - You can't go wrong with endless creative building!";
-
-            if (genre === 'adventure') {
-                recommendation = "Zelda: Tears of the Kingdom 🗡️ - An incredible open-world journey full of sky islands and creativity.";
-            } else if (genre === 'rpg') {
-                recommendation = "Genshin Impact ⚔️ - A vast action-RPG world with deep combat and exploration.";
-            } else if (genre === 'shooter') {
-                recommendation = "Apex Legends 🎯 - Fast-paced multiplayer action with unique character abilities.";
-            }
-
-            resultBox.innerHTML = `<strong>Recommended for you:</strong><br>${recommendation}`;
-        }
-
-        function addReview() {
-            const game = document.getElementById('gameName').value;
-            const text = document.getElementById('reviewText').value;
-
-            if (game.trim() === '' || text.trim() === '') {
-                alert('Please fill out both fields!');
-                return;
-            }
-
-            const reviewsList = document.getElementById('reviews-list');
-            const newReview = document.createElement('div');
-            newReview.className = 'user-review';
-            newReview.innerHTML = `<strong>${game}</strong><p>${text}</p>`;
-
-            reviewsList.appendChild(newReview);
-
-            document.getElementById('gameName').value = '';
-            document.getElementById('reviewText').value = '';
-        }
-    </script>
 
 </body>
 </html>
